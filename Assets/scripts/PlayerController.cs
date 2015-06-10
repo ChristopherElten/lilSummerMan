@@ -364,7 +364,7 @@ public class PlayerController : MonoBehaviour {
 		//ducking param
 		animator.SetBool ("isDucking", isDucking);
 		//Attacking param
-		animator.SetInteger ("attack", finalAttack);
+		animator.SetInteger ("attack_num", finalAttack);
 		//Dashing param
 		animator.SetBool ("isDashing", isDashing);
 		//Shielding param

@@ -7,7 +7,43 @@ AnimatorController:
   m_PrefabInternal: {fileID: 0}
   m_Name: player
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: isGrounded
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isDucking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isShielding
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isDashing
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: attack_num
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: speed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -22,7 +58,24 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   m_MultiThreadedStateMachine: 1
---- !u!1102 &110204248
+--- !u!1102 &110202756
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: attack_basic_1
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7452210, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
+  m_Tag: 
+--- !u!1102 &110217062
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -37,58 +90,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7412844, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
-  m_Tag: 
---- !u!1102 &110213298
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: launched
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_Motion: {fileID: 7451300, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
-  m_Tag: 
---- !u!1102 &110214048
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: attack_basic_0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_Motion: {fileID: 7407034, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
-  m_Tag: 
---- !u!1102 &110227214
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: run
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_Motion: {fileID: 7420966, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
+  m_Motion: {fileID: 7490072, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
   m_Tag: 
 --- !u!1102 &110238884
 AnimatorState:
@@ -107,7 +109,24 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7410304, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
   m_Tag: 
---- !u!1102 &110252964
+--- !u!1102 &110255018
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: launched
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7421032, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
+  m_Tag: 
+--- !u!1102 &110256306
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -122,7 +141,24 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7462180, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
+  m_Motion: {fileID: 7444726, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
+  m_Tag: 
+--- !u!1102 &110258498
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: walk
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7465710, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
   m_Tag: 
 --- !u!1102 &110266634
 AnimatorState:
@@ -141,7 +177,24 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7413844, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
   m_Tag: 
---- !u!1102 &110269060
+--- !u!1102 &110266684
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: attack_basic_0
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7434912, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
+  m_Tag: 
+--- !u!1102 &110267442
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -156,24 +209,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7427960, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
-  m_Tag: 
---- !u!1102 &110289760
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: attack_basic_1
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_Motion: {fileID: 7472010, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
+  m_Motion: {fileID: 7477736, guid: d2a21824d5b0b4ec8ad65ad1914319a3, type: 2}
   m_Tag: 
 --- !u!1107 &110770892
 AnimatorStateMachine:
@@ -185,31 +221,31 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110266634}
-    m_Position: {x: 200, y: 0, z: 0}
+    m_Position: {x: 324, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110238884}
-    m_Position: {x: 235, y: 65, z: 0}
+    m_Position: {x: 516, y: 72, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110227214}
-    m_Position: {x: 270, y: 130, z: 0}
+    m_State: {fileID: 110267442}
+    m_Position: {x: 60, y: 372, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110269060}
-    m_Position: {x: 305, y: 195, z: 0}
+    m_State: {fileID: 110266684}
+    m_Position: {x: 732, y: 300, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110214048}
-    m_Position: {x: 340, y: 260, z: 0}
+    m_State: {fileID: 110202756}
+    m_Position: {x: 252, y: 528, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110289760}
-    m_Position: {x: 375, y: 325, z: 0}
+    m_State: {fileID: 110255018}
+    m_Position: {x: 708, y: 456, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110213298}
-    m_Position: {x: 410, y: 390, z: 0}
+    m_State: {fileID: 110217062}
+    m_Position: {x: 504, y: 384, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110204248}
+    m_State: {fileID: 110256306}
     m_Position: {x: 445, y: 455, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110252964}
-    m_Position: {x: 480, y: 520, z: 0}
+    m_State: {fileID: 110258498}
+    m_Position: {x: 540, y: 192, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -222,4 +258,4 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 110227214}
+  m_DefaultState: {fileID: 110266634}

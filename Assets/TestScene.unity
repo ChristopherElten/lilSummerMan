@@ -1396,6 +1396,11 @@ GameObject:
   - 4: {fileID: 1225125653}
   - 95: {fileID: 1225125655}
   - 114: {fileID: 1225125654}
+  - 50: {fileID: 1225125660}
+  - 58: {fileID: 1225125659}
+  - 61: {fileID: 1225125658}
+  - 114: {fileID: 1225125657}
+  - 114: {fileID: 1225125656}
   m_Layer: 0
   m_Name: player 1
   m_TagString: Untagged
@@ -1448,6 +1453,121 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1225125656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225125652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a3606f96f83478c9ddbe73a0c8caab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightAnologHorizontal: 0
+  rightAnologVertical: 0
+  leftAnologHorizontal: 0
+  leftAnologVertical: 0
+  rightAnologClick: 0
+  leftAnologClick: 0
+  x: 0
+  square: 0
+  triangle: 0
+  circle: 0
+  rightBumper: 0
+  leftBumper: 0
+  rightTrigger: 0
+  leftTrigger: 0
+  dpadUp: 0
+  dpadRight: 0
+  dpadLeft: 0
+  dpadDown: 0
+  start: 0
+  select: 0
+  playstation: 0
+--- !u!114 &1225125657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225125652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8201bebf9f269492fbb215078d71a287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevel: 1
+  speed: 10
+  groundCheck: {fileID: 1699992392}
+  groundCheckRadius: .00999999978
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  jumpHeight: 20
+  dashSpeed: 20
+  secondsInDash: .20000000000000001
+  secondsBetweenDashes: 1
+  crouchRate: 3
+  sprintRate: 2
+  maxSpeed: 20
+  secondsInCombo: .29999999999999999
+  shieldPower: 0
+  shot: {fileID: 162548, guid: 6e68786737e804561a88d451cd070d96, type: 2}
+  shotSpeed: 10
+  secondsBetweenShots: .20000000000000001
+  triggerParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
+  runningParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
+  jumpParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
+  attackParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
+  healthSlider: {fileID: 1762057383}
+  manaSlider: {fileID: 1308755141}
+  expSlider: {fileID: 1851212569}
+  levelText: {fileID: 1465898510}
+  armorText: {fileID: 936988296}
+  healthText: {fileID: 1517036143}
+  manaText: {fileID: 466939851}
+  experienceText: {fileID: 1840945618}
+--- !u!61 &1225125658
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225125652}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 978bc7791543c4d3cb81c639792e4d13, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .360000014}
+  serializedVersion: 2
+  m_Size: {x: .469999999, y: .430000007}
+--- !u!58 &1225125659
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225125652}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -.150000006}
+  serializedVersion: 2
+  m_Radius: .289999992
+--- !u!50 &1225125660
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225125652}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 5
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &1234350744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2117,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 256af4b92194346528f96c203f2d2c86, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1699992392 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 436704, guid: 821571358b11045418d84dc95f404ad8, type: 2}
+  m_PrefabInternal: {fileID: 1132929386}
 --- !u!1 &1718357671
 GameObject:
   m_ObjectHideFlags: 0
