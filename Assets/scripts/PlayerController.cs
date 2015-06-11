@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour {
 	//Horizontal movement speed
 	public float speed;
 	//Direction variable
-	int facingRight; // 1 = right, -1 = left
+	private int facingRight; // 1 = right, -1 = left
+	private bool isFalling;
 	//Jumping Variables
 	public Transform groundCheck;
 	public float groundCheckRadius;
@@ -189,6 +190,9 @@ public class PlayerController : MonoBehaviour {
 
 		//Checking is player is grounded
 		isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, whatIsGround);
+		//Checking is player is falling
+		isFalling = (myRigidbody2D.velocity.y < -0.1);
+		Debug.Log (isFalling + " : " + myRigidbody2D.velocity.y);
 
 		// Ducking mechanism
 		if (PS3.leftAnologClick && isGrounded) {
@@ -258,7 +262,6 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		Debug.Log ("AttackNextFrame: " + willAttackNextFrame + " In combo : " + inCombo);
 		//if the combo time period is over, the players next attack will be set to the final attack value before getting reset.
 		if (willAttackNextFrame) {
 
@@ -347,9 +350,10 @@ public class PlayerController : MonoBehaviour {
 		for (int i = 0; i < nextAttack.Count; i++){
 			tempNextAttack = tempNextAttack + nextAttack[i];
 		}
-		Debug.Log ("Final Attack" + tempNextAttack);
 		if (tempNextAttack == "S") {
 			finalAttack = 1;
+		} else if (tempNextAttack == "T") {
+			finalAttack = 2;
 		} else {
 			finalAttack = 0;
 		}
@@ -369,6 +373,8 @@ public class PlayerController : MonoBehaviour {
 		animator.SetBool ("isDashing", isDashing);
 		//Shielding param
 		animator.SetBool ("isShielding", isAimingAndShielding);
+		//Falling param
+		animator.SetBool ("isFalling", isFalling);
 
 	}
 
@@ -487,21 +493,21 @@ public class PlayerController : MonoBehaviour {
 	
 	//Updating Player (levelup, Change weapon, armor, etc)
 	private void updatePlayer(){
-		leftArm = GameObject.Find ("lilSummerMan-leftArm");
-		rightArm = GameObject.Find ("lilSummerMan-rightArm");
-		leftFoot = GameObject.Find ("lilSummerMan-leftFoot");
-		rightFoot = GameObject.Find ("lilSummerMan-rightFoot");
-		head = GameObject.Find ("lilSummerMan-head");
-		body = GameObject.Find ("lilSummerMan-body");
+		leftArm = GameObject.Find ("left_arm");
+		rightArm = GameObject.Find ("right_arm");
+		leftFoot = GameObject.Find ("left_leg");
+		rightFoot = GameObject.Find ("right_leg");
+		head = GameObject.Find ("head_000");
+		body = GameObject.Find ("body");
 
 		//Calculating Armor Points
 		armorPoints = 0;
-		armorPoints += leftArm.GetComponent<ArmorController> ().armorPoints;
-		armorPoints += rightArm.GetComponent<ArmorController> ().armorPoints;
-		armorPoints += leftFoot.GetComponent<ArmorController> ().armorPoints;
-		armorPoints += rightFoot.GetComponent<ArmorController> ().armorPoints;
-		armorPoints += body.GetComponent<ArmorController> ().armorPoints;
-		armorPoints += head.GetComponent<ArmorController> ().armorPoints;
+//		armorPoints += leftArm.GetComponent<ArmorController> ().armorPoints;
+//		armorPoints += rightArm.GetComponent<ArmorController> ().armorPoints;
+//		armorPoints += leftFoot.GetComponent<ArmorController> ().armorPoints;
+//		armorPoints += rightFoot.GetComponent<ArmorController> ().armorPoints;
+//		armorPoints += body.GetComponent<ArmorController> ().armorPoints;
+//		armorPoints += head.GetComponent<ArmorController> ().armorPoints;
 
 		//UPDATE UI
 		armorText.text = "Armor: " + armorPoints;
