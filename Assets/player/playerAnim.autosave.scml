@@ -483,12 +483,12 @@
             </timeline>
             <timeline id="12" name="right_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542" a="0"/>
+                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542"/>
                 </key>
             </timeline>
             <timeline id="13" name="left_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255" a="0"/>
+                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255"/>
                 </key>
             </timeline>
         </animation>
@@ -687,12 +687,12 @@
             </timeline>
             <timeline id="12" name="right_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542" a="0"/>
+                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542"/>
                 </key>
             </timeline>
             <timeline id="13" name="left_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255" a="0"/>
+                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255"/>
                 </key>
             </timeline>
         </animation>
@@ -815,12 +815,12 @@
             </timeline>
             <timeline id="12" name="right_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542" a="0"/>
+                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542"/>
                 </key>
             </timeline>
             <timeline id="13" name="left_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255" a="0"/>
+                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255"/>
                 </key>
             </timeline>
         </animation>
@@ -967,12 +967,12 @@
             </timeline>
             <timeline id="12" name="right_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542" a="0"/>
+                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542"/>
                 </key>
             </timeline>
             <timeline id="13" name="left_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255" a="0"/>
+                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255"/>
                 </key>
             </timeline>
         </animation>
@@ -1107,12 +1107,12 @@
             </timeline>
             <timeline id="12" name="right_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542" a="0"/>
+                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542"/>
                 </key>
             </timeline>
             <timeline id="13" name="left_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255" a="0"/>
+                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255"/>
                 </key>
             </timeline>
         </animation>
@@ -1259,12 +1259,12 @@
             </timeline>
             <timeline id="12" name="right_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542" a="0"/>
+                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542"/>
                 </key>
             </timeline>
             <timeline id="13" name="left_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255" a="0"/>
+                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255"/>
                 </key>
             </timeline>
         </animation>
@@ -1349,12 +1349,12 @@
             </timeline>
             <timeline id="12" name="right_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542" a="0"/>
+                    <object folder="0" file="5" x="35.330261" y="5.901547" angle="106.001542"/>
                 </key>
             </timeline>
             <timeline id="13" name="left_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255" a="0"/>
+                    <object folder="0" file="6" x="22.982497" y="0.711195" angle="0.55255"/>
                 </key>
             </timeline>
         </animation>
