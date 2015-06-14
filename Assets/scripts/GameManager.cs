@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+//PUBLIC ENUMS
+
 //Type of pickup
 public enum Pickup {Experience, Mana, Health, Damage};
 
@@ -24,8 +26,7 @@ public class GameManager : MonoBehaviour {
 
 	public void instantiateText(string text, Vector3 pos, Pickup pickup){
 
-		//Instantiating text object whenever event occurs (damage, health, mana, etc)
-		//Withing a range of passed location
+		//Instantiating text object whenever event occurs (damage, health, mana, etc) Within a range of passed location
 		pos = new Vector3(Random.Range(pos.x-rangeTextDisplay, pos.x+rangeTextDisplay),Random.Range(pos.y-rangeTextDisplay, pos.y+rangeTextDisplay), 0);
 		GameObject temp = Instantiate(textMesh, pos, Quaternion.identity) as GameObject;
 		temp.GetComponent<TextMesh> ().text = text;

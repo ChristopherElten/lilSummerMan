@@ -46,21 +46,15 @@ public class PS3Controller : MonoBehaviour {
 	private string xButton = "joystick button 14";
 	private string squareButton = "joystick button 15";
 	private string playstationButton = "joystick button 16";
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
-		//GetKeyDown and GetKey used as needed
+		//GetKeyDown and GetKey used as needed...
+
 		leftAnologHorizontal = Input.GetAxis ("HorizontalMovement");
 		leftAnologVertical = Input.GetAxis ("VerticalMovement");
 		rightAnologHorizontal = Input.GetAxis ("HorizontalAiming");
 		rightAnologVertical = Input.GetAxis ("VerticalAiming");
-
-
 
 		leftBumper = Input.GetKey (leftBumperButton);
 		rightTrigger = Input.GetKey (rightTriggerButton);
@@ -72,7 +66,6 @@ public class PS3Controller : MonoBehaviour {
 		dpadUp = Input.GetKey (dpadUpButton);
 		dpadRight = Input.GetKey (dpadRightButton);
 		dpadLeft = Input.GetKey (dpadLeftButton);
-		dpadDown = Input.GetKey (dpadDownButton);
 
 		circle = Input.GetKeyDown (circleButton);
 		square = Input.GetKeyDown (squareButton);
@@ -80,8 +73,6 @@ public class PS3Controller : MonoBehaviour {
 		x = Input.GetKeyDown (xButton);
 		rightBumper = Input.GetKeyDown (rightBumperButton);
 		start = Input.GetKeyDown (startButton);
-
-
-		
+		dpadDown = Input.GetKeyDown (dpadDownButton);
 	}
 }

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
 	private GameObject head;
 	private GameObject rightFoot;
 	private GameObject leftFoot;
+	private GameObject right_weapon;
+	private GameObject left_weapon;
 
 	//Active unit Attributes
 	public int playerLevel;
@@ -102,6 +104,15 @@ public class PlayerController : MonoBehaviour {
 	private PS3Controller PS3;
 	private InventoryController inventory;
 
+	//Event Subscriptions
+	void OnEnable(){
+
+	}
+
+	void OnDisable(){
+
+	}
+
 	// Use this for initialization
 	void Start () {
 		//Getting animator, RigidBody, Game Manager, ps3 controller
@@ -119,7 +130,14 @@ public class PlayerController : MonoBehaviour {
 
 
 		//Getting player components
-		updatePlayer ();
+		leftArm = GameObject.Find ("left_arm");
+		rightArm = GameObject.Find ("right_arm");
+		leftFoot = GameObject.Find ("left_leg");
+		rightFoot = GameObject.Find ("right_leg");
+		head = GameObject.Find ("head_");
+		body = GameObject.Find ("body");
+		right_weapon = GameObject.Find ("right_weapon");
+		left_weapon = GameObject.Find ("left_weapon");
 
 		//Spawning full health etc
 		currentHealthPoints = maxHealthPoints;
@@ -337,6 +355,19 @@ public class PlayerController : MonoBehaviour {
 			Instantiate(triggerParticles, new Vector2 (leftArm.transform.position.x+1*facingRight,leftArm.transform.position.y) , Quaternion.identity);
 		}
 
+		//TEMP equip item
+		if (PS3.dpadDown){
+			for (int i =0; i < inventory.equipableInventoryItems.Count; i++){
+				if (inventory.equipableInventoryItems[i].type == Equipment.right_weapon){
+					Debug.Log (Equipment.GetNames(typeof(Equipment)).Length);
+					Debug.Log (inventory.equipedInventoryItems.Length);
+					Debug.Log ((int)inventory.equipableInventoryItems[i].type);
+					Debug.Log (inventory.equipableInventoryItems[i].name);
+					equip(inventory.equipableInventoryItems[i]);
+				}
+			}
+		}
+
 		//Capping player speed
 		if (myRigidbody2D.velocity.magnitude > maxSpeed){
 			myRigidbody2D.velocity = myRigidbody2D.velocity.normalized*maxSpeed;
@@ -496,13 +527,8 @@ public class PlayerController : MonoBehaviour {
 
 	
 	//Updating Player (levelup, Change weapon, armor, etc)
+	//DEPRECIATED - TODO remove
 	private void updatePlayer(){
-		leftArm = GameObject.Find ("left_arm");
-		rightArm = GameObject.Find ("right_arm");
-		leftFoot = GameObject.Find ("left_leg");
-		rightFoot = GameObject.Find ("right_leg");
-		head = GameObject.Find ("head_000");
-		body = GameObject.Find ("body");
 
 		//Calculating Armor Points
 		armorPoints = 0;
@@ -516,6 +542,16 @@ public class PlayerController : MonoBehaviour {
 		//UPDATE UI
 		armorText.text = "Armor: " + armorPoints;
 	}
+
+	private void equip(EquipableInventoryItem item){
+		inventory.equip(item);
+		if (item.type == Equipment.right_weapon){
+			right_weapon.GetComponent<SpriteRenderer>().sprite = item.sprite;
+		}
+	}
+
+
+	//Death
 	private void killPlayer(){
 		Destroy (this.gameObject);
 	}
