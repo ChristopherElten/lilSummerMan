@@ -82,9 +82,6 @@ public class PlayerController : MonoBehaviour {
 
 	//Particles
 	public ParticleSystem triggerParticles; //Shooting particle
-	public ParticleSystem runningParticles; //running particle
-	public ParticleSystem jumpParticles; //jumping and landing particles
-	public ParticleSystem attackParticles; //attackingParticles
 
 	//UI Elements
 	public Slider healthSlider;
@@ -96,6 +93,7 @@ public class PlayerController : MonoBehaviour {
 	public Text manaText;
 	public Text experienceText;
 
+	//Menu variables
 	private bool isPaused;
 
 	private Animator animator;
