@@ -102,15 +102,16 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D myRigidbody2D;
 	private GameManager gameManager;
 	private PS3Controller PS3;
+	private InventoryController inventory;
 
 	// Use this for initialization
 	void Start () {
-		
 		//Getting animator, RigidBody, Game Manager, ps3 controller
 		animator = GetComponent<Animator> ();
 		myRigidbody2D = GetComponent<Rigidbody2D> ();
 		PS3 = GetComponent<PS3Controller>();
 		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		inventory = GetComponent<InventoryController>();
 
 
 		//Starting at level 1, exp 0
@@ -192,7 +193,6 @@ public class PlayerController : MonoBehaviour {
 		isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, whatIsGround);
 		//Checking is player is falling
 		isFalling = (myRigidbody2D.velocity.y < -0.1);
-		Debug.Log (isFalling + " : " + myRigidbody2D.velocity.y);
 
 		// Ducking mechanism
 		if (PS3.leftAnologClick && isGrounded) {
@@ -372,7 +372,7 @@ public class PlayerController : MonoBehaviour {
 		//Dashing param
 		animator.SetBool ("isDashing", isDashing);
 		//Shielding param
-		animator.SetBool ("isShielding", isAimingAndShielding);
+//		animator.SetBool ("isShielding", isAimingAndShielding);
 		//Falling param
 		animator.SetBool ("isFalling", isFalling);
 
@@ -418,6 +418,12 @@ public class PlayerController : MonoBehaviour {
 			int manaPoints = other.gameObject.GetComponent<PickupController>().manaPoints;
 			int expPoints = other.gameObject.GetComponent<PickupController>().expPoints;
 			pickupEffect(healthPoints, manaPoints, expPoints, other.transform);
+			Destroy(other.gameObject);
+		}
+
+		//InventoryItem
+		if (other.gameObject.tag.Equals("InventoryItem")){
+			inventory.collect(other.gameObject);
 			Destroy(other.gameObject);
 		}
 	}
