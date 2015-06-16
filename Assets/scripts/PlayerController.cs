@@ -357,13 +357,30 @@ public class PlayerController : MonoBehaviour {
 
 		//TEMP equip item
 		if (PS3.dpadDown){
-			for (int i =0; i < inventory.equipableInventoryItems.Count; i++){
-				if (inventory.equipableInventoryItems[i].type == Equipment.right_weapon){
-					Debug.Log (Equipment.GetNames(typeof(Equipment)).Length);
-					Debug.Log (inventory.equipedInventoryItems.Length);
-					Debug.Log ((int)inventory.equipableInventoryItems[i].type);
-					Debug.Log (inventory.equipableInventoryItems[i].name);
-					equip(inventory.equipableInventoryItems[i]);
+
+//			for (int j =0; j < inventory.equipableInventoryItems.Count; j++){
+//				Debug.Log(inventory.equipableInventoryItems[j].name);
+//			}
+
+			for (int k =0; k < inventory.equipedInventoryItems.Length; k++){
+				if (inventory.equipedInventoryItems[k]){
+					Debug.Log(" : FINALLY : " + inventory.equipedInventoryItems[k].name);
+				} else {
+					Debug.Log (" : EMPTY (" + k + ") : ");
+				}
+			}
+
+			bool notFound = true;
+			LinkedListNode<EquipableInventoryItem> i = inventory.equipableInventoryItems.First;
+			while(notFound){
+				if (i.Next != null){
+				
+				}
+				if (i.Value.type == Equipment.right_weapon){
+					equip(i.Value);
+					notFound = true;
+				} else {
+
 				}
 			}
 		}
@@ -463,8 +480,7 @@ public class PlayerController : MonoBehaviour {
 			damage = 0;
 		gameManager.instantiateText (damage.ToString(), new Vector3 (other.transform.position.x, other.transform.position.y, other.transform.position.z), Pickup.Damage);
 		currentHealthPoints -= damage;
-		if (currentHealthPoints <= 0)
-			killPlayer ();
+		if (currentHealthPoints <= 0){}//Kill Player Here
 
 		//UPDATE UI
 		healthText.text = "Health: " + currentHealthPoints + " / " + maxHealthPoints;
@@ -544,15 +560,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void equip(EquipableInventoryItem item){
-		inventory.equip(item);
+		inventory.equip (item);
 		if (item.type == Equipment.right_weapon){
 			right_weapon.GetComponent<SpriteRenderer>().sprite = item.sprite;
 		}
 	}
 
-
-	//Death
-	private void killPlayer(){
-		Destroy (this.gameObject);
-	}
 }
