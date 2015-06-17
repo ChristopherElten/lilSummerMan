@@ -4,15 +4,17 @@ using System.Collections;
 public class EquipableInventoryItem : MonoBehaviour {
 
 	//Type of equipment (location/position ex: left_foot, right_foot)
-	public Equipment type;
+	public Equipment equipment_type;
 	//Sprite to render
-	public Sprite sprite;
+	public Sprite right_sprite;
+	public Sprite left_sprite;
 	//Name of equipment
-	public string name;
+	public string title;
+	public string description;
 
 	void Start(){
 		this.gameObject.AddComponent<SpriteRenderer>();
-		this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+		this.gameObject.GetComponent<SpriteRenderer>().sprite = right_sprite;
 	}
 
 }

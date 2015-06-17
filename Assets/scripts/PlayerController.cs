@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour {
 	private GameObject head;
 	private GameObject rightFoot;
 	private GameObject leftFoot;
-	private GameObject right_weapon;
-	private GameObject left_weapon;
+	private GameObject right_hand_weapon;
+	private GameObject left_hand_weapon;
 
 	//Active unit Attributes
 	public int playerLevel;
@@ -136,8 +136,8 @@ public class PlayerController : MonoBehaviour {
 		rightFoot = GameObject.Find ("right_leg");
 		head = GameObject.Find ("head_");
 		body = GameObject.Find ("body");
-		right_weapon = GameObject.Find ("right_weapon");
-		left_weapon = GameObject.Find ("left_weapon");
+		right_hand_weapon = GameObject.Find ("right_weapon");
+		left_hand_weapon = GameObject.Find ("left_weapon");
 
 		//Spawning full health etc
 		currentHealthPoints = maxHealthPoints;
@@ -357,32 +357,8 @@ public class PlayerController : MonoBehaviour {
 
 		//TEMP equip item
 		if (PS3.dpadDown){
-
-//			for (int j =0; j < inventory.equipableInventoryItems.Count; j++){
-//				Debug.Log(inventory.equipableInventoryItems[j].name);
-//			}
-
-			for (int k =0; k < inventory.equipedInventoryItems.Length; k++){
-				if (inventory.equipedInventoryItems[k]){
-					Debug.Log(" : FINALLY : " + inventory.equipedInventoryItems[k].name);
-				} else {
-					Debug.Log (" : EMPTY (" + k + ") : ");
-				}
-			}
-
-			bool notFound = true;
-			LinkedListNode<EquipableInventoryItem> i = inventory.equipableInventoryItems.First;
-			while(notFound){
-				if (i.Next != null){
-				
-				}
-				if (i.Value.type == Equipment.right_weapon){
-					equip(i.Value);
-					notFound = true;
-				} else {
-
-				}
-			}
+			//from current right handed weapon from linked list in dictionary we are getting the next weapon in the list
+//			inventory.equipedInventoryItems[Equipment.right_hand_weapon].
 		}
 
 		//Capping player speed
@@ -469,7 +445,7 @@ public class PlayerController : MonoBehaviour {
 
 		//InventoryItem
 		if (other.gameObject.tag.Equals("InventoryItem")){
-			inventory.collect(other.gameObject);
+			inventory.collectEquipableItem(other.gameObject.GetComponent<EquipableInventoryItem>());
 			Destroy(other.gameObject);
 		}
 	}
@@ -541,28 +517,9 @@ public class PlayerController : MonoBehaviour {
 		levelText.text = "Level: " + playerLevel;
 	}
 
-	
-	//Updating Player (levelup, Change weapon, armor, etc)
-	//DEPRECIATED - TODO remove
-	private void updatePlayer(){
-
-		//Calculating Armor Points
-		armorPoints = 0;
-//		armorPoints += leftArm.GetComponent<ArmorController> ().armorPoints;
-//		armorPoints += rightArm.GetComponent<ArmorController> ().armorPoints;
-//		armorPoints += leftFoot.GetComponent<ArmorController> ().armorPoints;
-//		armorPoints += rightFoot.GetComponent<ArmorController> ().armorPoints;
-//		armorPoints += body.GetComponent<ArmorController> ().armorPoints;
-//		armorPoints += head.GetComponent<ArmorController> ().armorPoints;
-
-		//UPDATE UI
-		armorText.text = "Armor: " + armorPoints;
-	}
-
 	private void equip(EquipableInventoryItem item){
-		inventory.equip (item);
-		if (item.type == Equipment.right_weapon){
-			right_weapon.GetComponent<SpriteRenderer>().sprite = item.sprite;
+		if (item.equipment_type == Equipment.right_hand_weapon){
+			right_hand_weapon.GetComponent<SpriteRenderer>().sprite = item.right_sprite;
 		}
 	}
 

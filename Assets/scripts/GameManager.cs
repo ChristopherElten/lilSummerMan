@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public enum Pickup {Experience, Mana, Health, Damage};
 
 //Type of Equipment
-public enum Equipment {right_foot, left_foot, right_leg, left_leg, right_arm, left_arm, right_weapon, left_weapon, torso, head};
+public enum Equipment {boots, pants, gauntlets, right_hand_weapon, left_hand_weapon, torso, head};
 
 public class GameManager : MonoBehaviour {
 
