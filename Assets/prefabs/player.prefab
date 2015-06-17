@@ -46,6 +46,7 @@ GameObject:
   - 58: {fileID: 5847346}
   - 114: {fileID: 11434598}
   - 114: {fileID: 11490070}
+  - 114: {fileID: 11473960}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -907,6 +908,25 @@ MonoBehaviour:
   start: 0
   select: 0
   playstation: 0
+--- !u!114 &11473960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917a457fa56234328adde24b78150002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initial_right_hand_weapon: {fileID: 199312, guid: 59d05dbfd1af24d7e9472c632b6fca56,
+    type: 2}
+  initial_left_hand_weapon: {fileID: 125084, guid: c36899f23adc444e586b90cbfba0e633,
+    type: 2}
+  initial_arms: {fileID: 168126, guid: 1c47ecedf4e404ef4973ab8ff183cf24, type: 2}
+  initial_legs: {fileID: 117926, guid: 7e75e2df22a5c49aa81e825824400519, type: 2}
+  initial_torso: {fileID: 193938, guid: 5149e75abbea6479b92e461f7b664134, type: 2}
+  initial_head: {fileID: 106170, guid: bd678b4bf426b4cb4a7a280ca537abca, type: 2}
 --- !u!114 &11489778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -951,9 +971,6 @@ MonoBehaviour:
   shotSpeed: 10
   secondsBetweenShots: .20000000000000001
   triggerParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
-  runningParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
-  jumpParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
-  attackParticles: {fileID: 19813412, guid: 49094b04efa614220b541067ae07ab10, type: 2}
   healthSlider: {fileID: 0}
   manaSlider: {fileID: 0}
   expSlider: {fileID: 0}

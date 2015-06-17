@@ -139,6 +139,9 @@ public class PlayerController : MonoBehaviour {
 		right_hand_weapon = GameObject.Find ("right_weapon");
 		left_hand_weapon = GameObject.Find ("left_weapon");
 
+		//Rendering initially equiped weapons 
+
+
 		//Spawning full health etc
 		currentHealthPoints = maxHealthPoints;
 		currentManaPoints = maxManaPoints;
@@ -255,12 +258,12 @@ public class PlayerController : MonoBehaviour {
 				if (PS3.triangle){
 					attack.Add('T');
 				}
-				string temp = "";
+				string combo_list = "";
 				for (int i = 0; i < attack.Count; i++){
-					temp = temp + attack[i];
+					combo_list = combo_list + attack[i];
 				}
 
-				gameManager.instantiateText (temp, new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z), Pickup.Experience);
+				gameManager.instantiateText (combo_list, new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z), Pickup.Experience);
 			}
 		}
 
@@ -358,7 +361,12 @@ public class PlayerController : MonoBehaviour {
 		//TEMP equip item
 		if (PS3.dpadDown){
 			//from current right handed weapon from linked list in dictionary we are getting the next weapon in the list
-//			inventory.equipedInventoryItems[Equipment.right_hand_weapon].
+//			string temp = inventory.equipedInventoryItems[Equipment.right_hand_weapon].Value.name;
+//			for(int i =0; i < inventory.equipableInventoryItems[Equipment.right_hand_weapon].Count; i++){
+				string temp2 = inventory.equipableInventoryItems[Equipment.right_hand_weapon].First.Value.name;
+				gameManager.instantiateText (temp2, new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z), Pickup.Experience);
+//			}
+//			gameManager.instantiateText (temp, new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z), Pickup.Experience);
 		}
 
 		//Capping player speed

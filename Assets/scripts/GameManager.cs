@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public enum Pickup {Experience, Mana, Health, Damage};
 
 //Type of Equipment
-public enum Equipment {boots, pants, gauntlets, right_hand_weapon, left_hand_weapon, torso, head};
+public enum Equipment {legs, arms, right_hand_weapon, left_hand_weapon, torso, head};
 
 public class GameManager : MonoBehaviour {
 
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour {
 			temp.GetComponent<TextMesh>().color = Color.green;
 		} else if (pickup == Pickup.Damage){
 			temp.GetComponent<TextMesh>().color = Color.red;
+		} else {
+			temp.GetComponent<TextMesh>().color = Color.white;
 		}
 	}
 }
