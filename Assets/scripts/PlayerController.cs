@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+
 public class PlayerController : MonoBehaviour {
 	
 	//Associated objects on Player (always on)
@@ -361,11 +362,12 @@ public class PlayerController : MonoBehaviour {
 		//TEMP equip item
 		if (PS3.dpadDown){
 			//from current right handed weapon from linked list in dictionary we are getting the next weapon in the list
-//			string temp = inventory.equipedInventoryItems[Equipment.right_hand_weapon].Value.name;
-//			for(int i =0; i < inventory.equipableInventoryItems[Equipment.right_hand_weapon].Count; i++){
-				string temp2 = inventory.equipableInventoryItems[Equipment.right_hand_weapon].First.Value.name;
-				gameManager.instantiateText (temp2, new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z), Pickup.Experience);
-//			}
+			LinkedListNode<EquipableInventoryItem> temp_lln = inventory.equipableInventoryItems[Equipment.right_hand_weapon].First;
+			do{
+				string temp = temp_lln.Value.name;
+				gameManager.instantiateText (temp, new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z), Pickup.Experience);
+				temp_lln = temp_lln.Next;
+			}while(temp_lln != null);
 //			gameManager.instantiateText (temp, new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z), Pickup.Experience);
 		}
 

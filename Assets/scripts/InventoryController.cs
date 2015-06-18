@@ -48,7 +48,13 @@ public class InventoryController : MonoBehaviour {
 
 		//adding nodes
 		equipableInventoryItems[Equipment.right_hand_weapon].AddFirst(primary_right_hand_weapon);
+		equipableInventoryItems[Equipment.left_hand_weapon].AddFirst(primary_left_hand_weapon);
+		equipableInventoryItems[Equipment.legs].AddFirst(primary_legs);
+		equipableInventoryItems[Equipment.arms].AddFirst(primary_arms);
+		equipableInventoryItems[Equipment.head].AddFirst(primary_head);
+		equipableInventoryItems[Equipment.torso].AddFirst(primary_torso);
 
+		
 		equipedInventoryItems[Equipment.legs] = primary_legs;
 		equipedInventoryItems[Equipment.arms] = primary_arms;
 		equipedInventoryItems[Equipment.right_hand_weapon] = primary_right_hand_weapon;
@@ -67,8 +73,8 @@ public class InventoryController : MonoBehaviour {
 	//Collecting new Equipable item
 	public void collectEquipableItem(EquipableInventoryItem equipment){
 		//Allocating Item to end of linked list
-		LinkedListNode<EquipableInventoryItem> newItem = new LinkedListNode<EquipableInventoryItem>(equipment.GetComponent<EquipableInventoryItem>());
+		LinkedListNode<EquipableInventoryItem> item_lln = new LinkedListNode<EquipableInventoryItem>(equipment.GetComponent<EquipableInventoryItem>());
 		//Adding to linked list associated with equipment type
-		equipableInventoryItems[equipment.GetComponent<EquipableInventoryItem>().equipment_type].AddLast(newItem);
+		equipableInventoryItems[equipment.GetComponent<EquipableInventoryItem>().equipment_type].AddLast(item_lln);
 	}
 }
