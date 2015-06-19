@@ -169,45 +169,75 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-		//Pause Feature
-		if (PS3.start) {
-			isPaused = !isPaused;
-		}
+	//Pause
+	private void togglePause(){
+		isPaused = !isPaused;
 
 		if (isPaused) {
 			Time.timeScale = 0;
 		} else {
 			Time.timeScale = 1;
 		}
+	}
 
-		//Checking if right joystick is being used
-		if ((Mathf.Abs (PS3.rightAnologHorizontal) != 0) || (Mathf.Abs (PS3.rightAnologVertical) != 0)) {
-			rightJoystick = true;
+	private void joystickCheck(bool isRightStick, bool isLeftStick){
+		if (isRightStick){
 			//Calculating angle of joysticks
 			directionRightJoystick = new Vector2 (PS3.rightAnologHorizontal, PS3.rightAnologVertical).normalized;
 			rotZRightJoystick = Mathf.Atan2 (-PS3.rightAnologHorizontal, PS3.rightAnologVertical) * Mathf.Rad2Deg;
-
 		} else {
-			rightJoystick = false;
 			directionRightJoystick = new Vector2(facingRight, 0f);
 			//headfirst rotation of player when rightjoystick isn't touched (for dashing)
 			rotZRightJoystick = -90f;
 		}
-		//Checking if left joystick is being used
-		if ((Mathf.Abs (PS3.leftAnologHorizontal) != 0) || (Mathf.Abs (PS3.leftAnologVertical) != 0)) {
-			leftJoystick = true;
+		if (isLeftStick){
 			//Calculating angle of joysticks
 			directionLeftJoystick = new Vector2 (PS3.leftAnologHorizontal, -PS3.leftAnologVertical).normalized;
 			rotZLeftJoystick = Mathf.Atan2 (-PS3.leftAnologHorizontal, -PS3.leftAnologVertical) * Mathf.Rad2Deg;
 		} else {
-			rightJoystick = false;
 			directionLeftJoystick = new Vector2(facingRight, 0f);
 			//headfirst rotation of player when rightjoystick isn't touched (for dashing)
 			rotZLeftJoystick = facingRight*-90f;
 		}
+	}
+	
+	private void jump(){
+		myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, jumpHeight);
+		Instantiate(triggerParticles, groundCheck.position, Quaternion.identity);
+	}
+
+	private void movePlayerHorizontal(float translationX){
+		if (isDucking && isGrounded) {
+			myRigidbody2D.velocity = new Vector2 (translationX / crouchRate, myRigidbody2D.velocity.y);
+		} else if (PS3.rightTrigger && isGrounded) {
+			myRigidbody2D.velocity = new Vector2 (translationX * sprintRate, myRigidbody2D.velocity.y);
+		} else {
+			myRigidbody2D.velocity = new Vector2 (translationX, myRigidbody2D.velocity.y);
+		}
+	}
+
+	private void dashPlayer(){
+		//Rotating character
+		transform.rotation = Quaternion.Euler (0f, 0f, rotZLeftJoystick);
+		myRigidbody2D.velocity = directionLeftJoystick * dashSpeed;
+		Instantiate(triggerParticles, transform.position, Quaternion.identity);
+	}
+
+	private void rotatePlayerLeftArm(){
+		leftArmAim = Quaternion.Euler (0f, 0f, (rotZRightJoystick + 90));
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		if (PS3.start) {
+			togglePause();
+		}
+
+		//Checking joystick inputs
+		rightJoystick = (Mathf.Abs (PS3.rightAnologHorizontal) != 0) || (Mathf.Abs (PS3.rightAnologVertical) != 0);
+		leftJoystick = (Mathf.Abs (PS3.leftAnologHorizontal) != 0) || (Mathf.Abs (PS3.leftAnologVertical) != 0);
+		joystickCheck(rightJoystick, leftJoystick);
 
 		//Checking is player is grounded
 		isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, whatIsGround);
@@ -259,6 +289,7 @@ public class PlayerController : MonoBehaviour {
 				if (PS3.triangle){
 					attack.Add('T');
 				}
+
 				string combo_list = "";
 				for (int i = 0; i < attack.Count; i++){
 					combo_list = combo_list + attack[i];
@@ -303,35 +334,24 @@ public class PlayerController : MonoBehaviour {
 		float translationX = 0f;
 		if (!isDashing) {
 			translationX = PS3.leftAnologHorizontal * speed;
-			if (isDucking && isGrounded) {
-				myRigidbody2D.velocity = new Vector2 (translationX / crouchRate, myRigidbody2D.velocity.y);
-			} else if (PS3.rightTrigger && isGrounded) {
-				myRigidbody2D.velocity = new Vector2 (translationX * sprintRate, myRigidbody2D.velocity.y);
-			} else {
-				myRigidbody2D.velocity = new Vector2 (translationX, myRigidbody2D.velocity.y);
-			}
+			movePlayerHorizontal(translationX);
 		}
 		
 		//Dashing Mechanism
 		if (PS3.leftTrigger) {
 			if (!isDashing && canDash) {
-					lastDashTime = Time.time;
+				lastDashTime = Time.time;
 			}
 		}
-		if (isDashing) {
-			//Rotating character
-			transform.rotation = Quaternion.Euler (0f, 0f, rotZLeftJoystick);
-			myRigidbody2D.velocity = directionLeftJoystick * dashSpeed;
-			Instantiate(triggerParticles, transform.position, Quaternion.identity);
+		if (isDashing){
+			dashPlayer();
 		} else {
 			transform.rotation = Quaternion.Euler (0f, 0f, 0f);
 		}
 
 		//Jumping Mechanism
 		if (PS3.x && isGrounded) {
-			myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x, jumpHeight);
-			Instantiate(triggerParticles, groundCheck.position, Quaternion.identity);
-
+			jump();
 		}
 
 		//Aiming and Shielding mechanism
@@ -346,7 +366,7 @@ public class PlayerController : MonoBehaviour {
 		if (isAimingAndShielding) {
 			//TODO CAPPING LEFT AND RIGHT AIMING TO NOT BE ABLE TO AIM AND SHOOT BACKWARDS
 			//Rotating left arm
-			leftArmAim = Quaternion.Euler (0f, 0f, (rotZRightJoystick + 90));
+			rotatePlayerLeftArm();
 		}
 
 		if (PS3.rightBumper && isAimingAndShielding && canShoot){
@@ -390,8 +410,6 @@ public class PlayerController : MonoBehaviour {
 			finalAttack = 0;
 		}
 
-
-
 		// Animator controller
 		// Setting speed param for animator
 		animator.SetFloat ("speed", Mathf.Abs (translationX));
@@ -418,7 +436,6 @@ public class PlayerController : MonoBehaviour {
 			leftArm.transform.rotation = Quaternion.Euler (0f, 0f, (Mathf.Atan2( directionRightJoystick.y,facingRight*directionRightJoystick.x )*Mathf.Rad2Deg));
 		}
 
-		
 		//Controlling which way player is facing -> When Not Aiming!! Otherwise we want the player to face the same direction
 		if (!isAimingAndShielding) {
 			if (myRigidbody2D.velocity.x < 0) {
